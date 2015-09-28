@@ -1,27 +1,29 @@
 <?php
-	require_once(LIB_PATH.DS."initialize.php");
+	require_once("../../includes/initialize.php");
 
 	if($session->is_logged_in()){
 		redirect_to("index.php");
 	}
 	
-	if(isset($_POST['submit'])){
+	if(isset($_POST['submit'])){ // Form has not been submitted
 		$username = trim($_POST['username']);
 		$password = trim($_POST['password']);
 		
 		$found_user = User::authenticate($username, $password);
 		
-		//check if pw and un exist
+		// Check databe to see if username/password exist
 		if($found_user){
 			$session->login($found_user);
+			log_action('Login', "{$found_user->username} logged in.");
 			redirect_to("index.php");
 		}else{
+			// username/password combo was not found in the database
 			$message = "Username/password combination incorrect.";
 		}
 	}else{
-	//form has not been submitted
-		$username="";
-		$password="";
+	// Form has not been submitted
+		$username = "";
+		$password = "";
 	}
 ?>
 <html>

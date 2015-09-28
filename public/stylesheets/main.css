@@ -15,3 +15,5 @@ table, tr, td, tr {border-collapse: collapse; vertical-align: top;
 	background: #1A446C; color: #D4E6F4;}
 
 table.bordered tr th, table.bordered tr td {border: 1px solid #000000;}
+
+#pagination .selected { font-weight: bold; color: #8D0D19;}
