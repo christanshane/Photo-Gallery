@@ -37,7 +37,8 @@
 		
 		// Common Database methods
 		public static function find_all(){
-			return self::find_by_sql("SELECT * FROM".self::$table_name);
+			global $database;
+			return self::find_by_sql("SELECT * FROM ".self::$table_name);
 		}
 		
 		public static function find_by_id($id=0){
@@ -79,10 +80,31 @@
 		
 		private function has_attribute($attribute){
 		// get_object_vars returns an associative array with all attributes
-			$object_vars = $this->attributes();
-			
-			return array_key_exists($attribute, $object_vars);
+			return array_key_exists($attribute, $this->attributes());
 		}
+
+		protected function attributes() { 
+		// return an array of attribute names and their values
+		  $attributes = array();
+		  foreach(self::$db_fields as $field) {
+		    if(property_exists($this, $field)) {
+		      $attributes[$field] = $this->$field;
+		    }
+		  }
+		  return $attributes;
+		}
+		
+		protected function sanitized_attributes() {
+		  global $database;
+		  $clean_attributes = array();
+		  // sanitize the values before submitting
+		  // Note: does not alter the actual value of each attribute
+		  foreach($this->attributes() as $key => $value){
+		    $clean_attributes[$key] = $database->escape_value($value);
+		  }
+		  return $clean_attributes;
+		}
+
 		public function create(){
 			global $database;
 			$attributes = $this->sanitized_attributes();
