@@ -4,7 +4,7 @@
 	//must have an ID
 	if(empty($_GET['id'])){
 		$session->message("No photograph ID was provided.");
-		redirect_to('index.php');
+		redirect_to('../index.php');
 	}
 
 	$photo = Photograph::find_by_id($_GET['id']);

@@ -4,7 +4,7 @@
 	//must have an ID
 	if(empty($_GET['id'])){
 		$session->message("No comment ID was provided.");
-		redirect_to('index.php');
+		redirect_to('../index.php');
 	}
 
 	$comment = Comment::find_by_id($_GET['id']);

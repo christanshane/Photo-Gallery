@@ -1,0 +1,6 @@
+body{
+	margin:0px;
+	background-image: url('../images/yellow.jpg');
+	background-size: cover;
+	background-position-y: -275px;
+}

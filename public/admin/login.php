@@ -1,8 +1,5 @@
 <?php
 	require_once("../../includes/initialize.php");
-	if($session->is_logged_in()) {
-	  redirect_to("index.php");
-	}
 	// Remember to give your form's submit tag a name="submit" attribute!
 	if (isset($_POST['submit'])) { // Form has been submitted.
 	  $username = trim($_POST['username']);
@@ -14,10 +11,12 @@
 	  if ($found_user) {
 	    $session->login($found_user);
 			log_action('Login', "{$found_user->username} logged in.");
-	    redirect_to("index.php");
+			echo "Found result!";
+			header("location: ../about.php?username=" .$uname . "&note=success"); 	
+	    redirect_to("../index.php");
 	  } else {
 	    // username/password combo was not found in the database
-	    $message = "Username/password combination incorrect.";
+	    echo "No Result!";
 	  }
 	  
 	} else { // Form has not been submitted.
@@ -25,31 +24,57 @@
 	  $password = "";
 	}
 ?>
-	<?php include_layout_template('admin_header.php'); ?>
 
-			<h2>Admin</h2>
-			<?php echo output_message($message); ?>
+<html>
+	<head>
+		<title>Login | ArtDiscrete</title>
+		<link href="../stylesheets/loginstyle.css" rel="Stylesheet" type="text/css"/>
+	</head>
+	<body>
+		<header>
+			<div class="logo-holder">
 
-			<form action="login.php" method="post">
-			  <table>
-			    <tr>
-			      <td>Username:</td>
-			      <td>
-			        <input type="text" name="username" maxlength="30" value="<?php echo htmlentities($username); ?>" />
-			      </td>
-			    </tr>
-			    <tr>
-			      <td>Password:</td>
-			      <td>
-			        <input type="password" name="password" maxlength="30" value="<?php echo htmlentities($password); ?>" />
-			      </td>
-			    </tr>
-			    <tr>
-			      <td colspan="2">
-			        <input type="submit" name="submit" value="Login" />
-			      </td>
-			    </tr>
-			  </table>
-			</form>
-
-<?php include_layout_template('admin_footer.php'); ?>
+			</div>
+			<div class="nav-holder">
+				<div class="nav-wrapper">
+					<div class="button">
+						<a href="../admin/index.php"><span> Home </span></a>
+					</div>
+					<div class="button">
+						<a href="../admin/about.php"><span> About </span></a>
+					</div>
+					<div class="button">
+						<a href="../admin/changelog.php"><span> Updates </span></a>
+					</div>
+					<div class="button">
+						<a href="../admin/register.php"><span> Register </span></a>
+					</div>
+					<div class="button">
+							<div class="login">
+								<a href="#loginScreen">Login </a>
+							</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div id="loginScreen">
+		    <a href="#" class="cancel">&times;</a>
+		    <div class="loginpage">
+		    	<div class="logindesc">
+		    		Log In to ArtDiscrete
+		    		<hr />
+		    	</div>
+		    	<div class="loginholder">
+		    		<form method="POST" action="login.php">
+			    		<input type="text" name="username" class="input" placeholder="Username" required/>
+			    		<input type="password" name="password" class="input" placeholder="Password" required/>
+			    		<input type="submit" name="submit" value="Login" id="submit" class="loginbutton"/>
+			    		<br>
+		    		</form>
+		    	</div>
+		    </div>
+		</div>
+		<div id="cover">
+		</div>
+	</body>
+</html>

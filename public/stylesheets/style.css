@@ -1,0 +1,156 @@
+body{
+	margin:0px;
+}
+a{
+	text-decoration: none;
+}
+video{
+	margin: 0px auto 0px auto;
+}
+.main-container{
+	margin:0px auto 0px auto;
+}
+.banner-container{
+	margin:0px auto 0px auto;
+}
+.links-container{
+	width:1600px;
+	height:750px;
+	margin:275px auto 75px auto;
+}
+.tiles-container{
+	margin:0px auto 0px 0px;
+}
+.onebyone{
+	height:375px;
+	width:375px;
+	float:left;
+	font-size:32px;
+	margin:25px 0px 0px 0px;
+	background-color:#2e54a2;
+	color:white;
+}
+.fourbyone{
+	height:350px;
+	width:100%;
+	float:left;
+	background-color:#2e54a2;
+	background-image:url('../images/city.jpg');
+	background-position: bottom ;
+	background-attachment: fixed;
+}
+.border{
+	width:33.3px;
+	height:350px;
+	float:left;
+}
+.tiledesc{
+	font-size:24px;
+	font-family: calibri;
+	color:black;
+	width:80%;
+	height: 50%;
+	float:left;
+	background-color:rgba(255,255,255,.6);
+	margin:150px auto 50px 20px;
+}
+.tiledesc p{
+	margin-left:20px;
+}
+.tile1{
+	width:100%;
+	height:100%;
+	background-image:url('../images/thumbnail1.png');
+}
+.tile2{
+	width:100%;
+	height:100%;
+	background-image:url('../images/thumbnail2.png');
+}
+.tile3{
+	width:100%;
+	height:100%;
+	background-image:url('../images/thumbnail3.png');
+}
+.tile4{
+	width:100%;
+	height:100%;
+	background-image:url('../images/thumbnail4.png');
+}
+#tile{
+	transition:background-size 4s;
+	background-size: 100%;
+	background-position: center;
+}
+#tile:hover{
+	background-size: 120%;
+}
+.half{
+	width:50%;
+	height:100%;
+	float:left;
+	color:white;
+	font-size:32px;
+	text-align: left;
+}
+.half p{
+	margin-left:50px;
+}
+.buttondesc{
+	width:150px;
+	height:40px;
+	font-size:22px;
+	border-radius: 4px;
+	margin:0px 50px 0px auto;
+	border-width: 2px;
+	line-height: 40px;
+	color:white;
+	font-family: calibri;
+	float:right;
+	border-color:white;
+	border-style: solid;
+	text-align: center;
+	vertical-align: middle;
+}
+.buttondesc:hover{
+	background-color:white;
+	color:black;
+}
+.footer-container{
+	width:1600px;
+	height:150px;
+	background-color: #3a5284;
+	margin:0px auto 0px auto;
+}
+.tiledescription{
+	font-size:18px;
+}
+.tiledescription em{
+	color:red;
+	text-decoration: underline;
+}
+.col10{
+	width:10%;
+	height:100%;
+	float:left;
+	font-size:22px;
+	font-family: consolas;
+}
+#logo-holder{
+	background-image:url('../images/logo.png');
+	background-size: 90%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.col80{
+	width:80%;
+	height:100%;
+	float:left;
+}
+.register-container{
+	height:100vh;
+	width: 100%;
+	background-image: url('../images/register.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
